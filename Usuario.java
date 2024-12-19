@@ -1,21 +1,33 @@
+import java.util.ArrayList;
+
 public class Usuario {
 
-    public String nome;
-    public int id;
-    public ArrayList<Livro> livrosEmprestados;
+    public final String nome;
+    public final int id;
+    public final ArrayList<Livro> livrosEmprestados;
 
     public Usuario(String nome, int id, ArrayList<Livro> livrosEmprestados) {
         this.nome = nome;
         this.id = id;
         this.livrosEmprestados = new ArrayList<>();
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public boolean isId(int id) {
+        return this.id == id;
+    }
+
     public void exibirDetalhes(){
         System.out.println("Nome: " + nome);
         System.out.println("ID: " + id);
-        System.out.println("Livros emprestados: " + livrosEmprestados);
+
         if (livrosEmprestados.isEmpty()) {
             System.out.println("Nenhum livro emprestado.");
         } else {
+            System.out.println("Livros emprestados: ");
             for (Livro livro : livrosEmprestados) {
                 System.out.println("* " + livro.getTitulo());
             }
@@ -38,28 +50,7 @@ public class Usuario {
         }
     }
 
-    public String getNome() {
-        return nome;
-    }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public ArrayList<Livro> getLivrosEmprestados() {
-        return livrosEmprestados;
-    }
-
-    public void setLivrosEmprestados(ArrayList<Livro> livrosEmprestados) {
-        this.livrosEmprestados = livrosEmprestados;
-    }
 }
-}
+
