@@ -12,41 +12,33 @@ public class Livro {
         this.disponivel = true;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void exibirDetalhes(){
+    public boolean detalhes(){
         System.out.println("Título: " + titulo);
         System.out.println("Autor: " + autor);
         System.out.println("ISBN: " + isbn);
         System.out.println("Disponível: " + (disponivel ? "Sim" : "Não"));
+        return true;
     }
 
-    public boolean emprestar(){
-        if (disponivel) {
-            disponivel = false;
-            System.out.println("Livro emprestado com sucesso");
-            return true;
-        } else {
-            System.out.println("O livro não está disponível");
-            return false;
-        }
+    public void emprestar(){
+        this.disponivel = false;
     }
 
     public void devolver(){
-        if (!disponivel){
-            disponivel = true;
-            System.out.println("Obrigado: Livro devolvido.");
-        } else {
-            System.out.println("Livro já disponível no sistema.");
-        }
+        this.disponivel = true;
 
     }
 
-    public boolean isbnDisponivel(String isbn) {
-        return this.isbn.equals(isbn) && disponivel;
+    public boolean isbnDisponivel() {
+        return true;
     }
 
+    public boolean isDisponivel() {
+        return true;
+    }
 }
 

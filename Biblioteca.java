@@ -5,7 +5,7 @@ public class Biblioteca {
     private final ArrayList<Livro> livros;
     private final ArrayList<Usuario> usuarios;
 
-    public Biblioteca(){
+    public Biblioteca() {
         this.livros = new ArrayList<>();
         this.usuarios = new ArrayList<>();
     }
@@ -16,30 +16,41 @@ public class Biblioteca {
 
     public void cadastrarUsuario(Usuario usuario) {
         usuarios.add(usuario);
-        System.out.println("Usuário cadastrado com sucesso: " + usuario.getNome());
+
     }
 
-    public void realizarEmprestimo(String isbn, int idUsuario) {
-        Livro livroEncontrado = null;
+    public Livro buscarLivroPorIsbn(String isbn) {
         for (Livro livro : livros) {
-            if (livro.isbnDisponivel(isbn)) {
-                livroEncontrado = livro;
-                break;
+            if (livro.getIsbn().equals(isbn)) {
+                return livro;
             }
         }
+        return null;
+    }
 
-        if (livroEncontrado == null) {
-            System.out.println("Livro com ISBN " + isbn + " não disponível para empréstimo");
-            return;
-        }
-
-        Usuario usuarioEncontrado = null;
+    public Usuario buscarUsuarioPorId(int id) {
         for (Usuario usuario : usuarios) {
-            if (usuario.isId(idUsuario)) {
-                usuarioEncontrado = usuario;
-                break;
+            if (usuario.getId() == id) {
+                return usuario;
             }
         }
+        return null;
+
+    }
+
+    public ArrayList<Livro> getLivrosDisponiveis() {
+        ArrayList<Livro> disponiveis = new ArrayList<>();
+        for (Livro livro : livros) {
+            if (livro.isDisponivel()) {
+                disponiveis.add(livro);
+            }
+        }
+        return disponiveis;
+
+    }
+
+    public ArrayList<Livro> getLivrosCadastrados() {
+        return livros;
     }
 
 }
